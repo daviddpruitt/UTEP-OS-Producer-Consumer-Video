@@ -8,6 +8,11 @@ thread will read frames from a file, a second thread will take those frames
 and convert them to grayscale, and the third thread will display those
 frames. The threads will run concurrently.
 
+In order to run this lab opencv will need to be installed. The instructions 
+for installing opencv are available on here:
+
+[pypi.org/project/opencv-python](https://pypi.org/project/opencv-python/)
+
 ## File List
 ### ExtractFrames.py
 Extracts a series of frames from the video contained in 'clip.mp4' and saves 
