@@ -13,6 +13,14 @@ for installing opencv are available on here:
 
 [pypi.org/project/opencv-python](https://pypi.org/project/opencv-python/)
 
+## Allowed libraries
+The purpose of this lab is to implement and use a producer-consumer system.
+Python already has several synchronized bounded buffers and queues available 
+as libraries. You *may not* use any of these as they would prevent you from 
+demonstrating the knowledge you've gained. The only threading/synchronization
+objects or methods you may use are mutexes and semaphores (we suggest using
+the threads api).
+
 ## File List
 ### ExtractFrames.py
 Extracts a series of frames from the video contained in 'clip.mp4' and saves 
