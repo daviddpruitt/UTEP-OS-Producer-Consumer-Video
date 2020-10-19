@@ -8,10 +8,15 @@ thread will read frames from a file, a second thread will take those frames
 and convert them to grayscale, and the third thread will display those
 frames. The threads will run concurrently.
 
-In order to run this lab opencv will need to be installed. The instructions 
-for installing opencv are available on here:
+In order to run this lab opencv will need to be installed. To install opencv
+use the follwing commands (note that ordering is important):
 
-[pypi.org/project/opencv-python](https://pypi.org/project/opencv-python/)
+sudo zypper -n install python3-devel
+sudo zypper -n install ffmpeg ffmpeg-3
+sudo zypper -n install gstreamer gstreamer-devel
+sudo zypper -n install python3-numpy
+sudo pip install --upgrade pip
+sudo pip install opencv-python
 
 ## Allowed libraries
 The purpose of this lab is to implement and use a producer-consumer system.
@@ -53,7 +58,7 @@ them in sequence
 * Threads will need to signal that they have completed their task
 * Threads must process all frames of the video exactly once
 * Frames will be communicated between threads using producer/consumer idioms
-  * Producer/consumer quesues will be bounded at ten frames
+  * Producer/consumer qeueus must be bounded at ten frames
 
 Note: You may have ancillary objects and method in order to make you're code easer to understand and implement.
 

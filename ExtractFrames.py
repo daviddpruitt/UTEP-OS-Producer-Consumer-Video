@@ -13,17 +13,18 @@ vidcap = cv2.VideoCapture(clipFileName)
 
 # create the output directory if it doesn't exist
 if not os.path.exists(outputDir):
-  print("Output directory {} didn't exist, creating".format(outputDir))
+  print(f"Output directory {outputDir} didn't exist, creating")
   os.makedirs(outputDir)
 
 # read one frame
 success,image = vidcap.read()
 
-print("Reading frame {} {} ".format(count, success))
+print(f'Reading frame {count} {success}')
 while success:
 
   # write the current frame out as a jpeg image
-  cv2.imwrite("{}/frame_{:04d}.jpg".format(outputDir, count), image)   
+  cv2.imwrite(f"{outputDir}/frame_{count:04d}.jpg", image)   
+
   success,image = vidcap.read()
-  print('Reading frame {}'.format(count))
+  print(f'Reading frame {count}')
   count += 1

@@ -13,21 +13,21 @@ count = 0
 startTime = time.time()
 
 # Generate the filename for the first frame 
-frameFileName = "{}/grayscale_{:04d}.jpg".format(outputDir, count)
+frameFileName = f'{outputDir}/grayscale_{count:04d}.jpg'
 
 # load the frame
 frame = cv2.imread(frameFileName)
 
 while frame is not None:
     
-    print("Displaying frame {}".format(count))
+    print(f'Displaying frame {count}')
     # Display the frame in a window called "Video"
-    cv2.imshow("Video", frame)
+    cv2.imshow('Video', frame)
 
     # compute the amount of time that has elapsed
     # while the frame was processed
     elapsedTime = int((time.time() - startTime) * 1000)
-    print("Time to process frame {} ms".format(elapsedTime))
+    print(f'Time to process frame {elapsedTime} ms')
     
     # determine the amount of time to wait, also
     # make sure we don't go into negative time
@@ -42,7 +42,7 @@ while frame is not None:
     
     # get the next frame filename
     count += 1
-    frameFileName = "{}/grayscale_{:04d}.jpg".format(outputDir, count)
+    frameFileName = f'{outputDir}/grayscale_{count:04d}.jpg'
 
     # Read the next frame file
     frame = cv2.imread(frameFileName)
