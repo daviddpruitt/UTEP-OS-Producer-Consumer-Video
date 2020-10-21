@@ -6,7 +6,7 @@ import numpy as np
 import base64
 import queue
 
-def extractFrames(fileName, outputBuffer):
+def extractFrames(fileName, outputBuffer, maxFramesToLoad=9999):
     # Initialize frame count 
     count = 0
 
@@ -17,7 +17,7 @@ def extractFrames(fileName, outputBuffer):
     success,image = vidcap.read()
     
     print(f'Reading frame {count} {success}')
-    while success:
+    while success and count < maxFramesToLoad:
         # get a jpg encoded frame
         success, jpgImage = cv2.imencode('.jpg', image)
 
@@ -25,7 +25,7 @@ def extractFrames(fileName, outputBuffer):
         jpgAsText = base64.b64encode(jpgImage)
 
         # add the frame to the buffer
-        outputBuffer.put(jpgAsText)
+        outputBuffer.put(image)
        
         success,image = vidcap.read()
         print(f'Reading frame {count} {success}')
@@ -41,22 +41,13 @@ def displayFrames(inputBuffer):
     # go through each frame in the buffer until the buffer is empty
     while not inputBuffer.empty():
         # get the next frame
-        frameAsText = inputBuffer.get()
-
-        # decode the frame 
-        jpgRawImage = base64.b64decode(frameAsText)
-
-        # convert the raw frame to a numpy array
-        jpgImage = np.asarray(bytearray(jpgRawImage), dtype=np.uint8)
-        
-        # get a jpg encoded frame
-        img = cv2.imdecode( jpgImage ,cv2.IMREAD_UNCHANGED)
+        frame = inputBuffer.get()
 
         print(f'Displaying frame {count}')        
 
         # display the image in a window called "video" and wait 42ms
         # before displaying the next frame
-        cv2.imshow('Video', img)
+        cv2.imshow('Video', frame)
         if cv2.waitKey(42) and 0xFF == ord("q"):
             break
 
@@ -73,7 +64,7 @@ filename = 'clip.mp4'
 extractionQueue = queue.Queue()
 
 # extract the frames
-extractFrames(filename,extractionQueue)
+extractFrames(filename,extractionQueue, 72)
 
 # display the frames
 displayFrames(extractionQueue)
