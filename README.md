@@ -11,12 +11,12 @@ frames. The threads will run concurrently.
 In order to run this lab opencv will need to be installed. To install opencv
 use the follwing commands (note that ordering is important):
 
-sudo zypper -n install python3-devel
-sudo zypper -n install ffmpeg ffmpeg-3
-sudo zypper -n install gstreamer gstreamer-devel
-sudo zypper -n install python3-numpy
-sudo pip install --upgrade pip
-sudo pip install opencv-python
+    sudo zypper -n install python3-devel
+    sudo zypper -n install ffmpeg ffmpeg-3
+    sudo zypper -n install gstreamer gstreamer-devel
+    sudo zypper -n install python3-numpy
+    sudo pip install --upgrade pip
+    sudo pip install opencv-python
 
 ## Allowed libraries
 The purpose of this lab is to implement and use a producer-consumer system.
